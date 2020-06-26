@@ -9,7 +9,8 @@
                 "https://www.themoviedb.org/movie/*",
                 "https://www.themoviedb.org/tv/*"
             ],
-            "js": ["jquery-3.5.1.min.js", "media-title.js"]
+            "run_at": "document_end",
+            "js": ["clipboard.min.js", "media-title.js"]
         }
     ]
 }
