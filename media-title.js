@@ -5,6 +5,30 @@ function getRawTitle() {
     return title.concat(" ", release_year);
 }
 
+function getLocalizedReplacement(to_replace) {
+    // Map special characters to localized words
+    let locale_mapping = {
+        "&": {
+            en: "and",
+            de: "und"
+        }
+    }
+    let replacement;
+    // Switch witch default to exclude unsupported languages
+    switch (document.documentElement.lang) {
+        case "en":
+            replacement = locale_mapping[to_replace].en
+            break;
+        case "de":
+            replacement = locale_mapping[to_replace].de
+            break;
+        default:
+            replacement = " "
+    }
+
+    return replacement;
+}
+
 function formatMovieTitle() {
     let raw_title = getRawTitle();
     // Set up (p)atterns and (r)eplacements
@@ -16,6 +40,7 @@ function formatMovieTitle() {
         { p: /ü/g, r: 'ue' },
         { p: /Ü/g, r: 'Ue' },
         { p: /ß/g, r: 'ss' },
+        { p: /&/g, r: getLocalizedReplacement("&") },
         { p: /[^0-9a-zA-Z()]+/g, r: '-' }  // replace spaces and special characters with dashes
     ]
     // Run formatters over raw title
