@@ -6,8 +6,15 @@
     "content_scripts": [
         {
             "matches": [
-                "https://www.themoviedb.org/movie/*",
-                "https://www.themoviedb.org/tv/*"
+                "*://*.themoviedb.org/movie/*",
+                "*://*.themoviedb.org/tv/*"
+            ],
+            "exclude_matches": [
+                "*://*.themoviedb.org/*/top-rated*",
+                "*://*.themoviedb.org/movie/now-playing*",
+                "*://*.themoviedb.org/movie/upcoming*",
+                "*://*.themoviedb.org/tv/airing-today*",
+                "*://*.themoviedb.org/tv/on-the-air*"
             ],
             "run_at": "document_end",
             "js": ["clipboard.min.js", "media-title.js"]
