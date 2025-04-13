@@ -1,7 +1,7 @@
 {
-    "manifest_version": 2,
+    "manifest_version": 3,
     "name": "Copy Plex-friendly media filename",
-    "version": "0.2",
+    "version": "0.3",
     "description": "The easiest way to get Plex-friendly media filenames from themoviedb.org",
     "content_scripts": [
         {
